@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
-<body>
+<body class="container">
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -12,8 +12,8 @@
 
 <form method="post">
     <div th:each="cheese: ${cheeses}" class="checkbox">
-        <input type="checkbox" name="cheeseName" th:value="${cheese.key}"
-            th:id="${cheese.key}" th:text="${cheese.key}" />
+        <input type="checkbox" name="cheeseName" th:value="${cheese.name}"
+            th:id="${cheese.name}" th:text="${cheese.name}" />
         <br />
     </div>
     <input type="submit" value="Remove Cheese" />
