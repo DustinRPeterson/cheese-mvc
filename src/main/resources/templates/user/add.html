@@ -11,12 +11,16 @@
 <form method="post" th:object="${user}">
     <label>Username:
     <input type="text" th:field="*{username}"  /></label>
+    <span th:errors="*{username}" class="error"></span>
     <label>Password:
     <input type="password" th:field="*{password}" /></label>
+    <span th:errors="*{password}" class="error"></span>
     <label>Verify Password:
     <input type="password" name="verify" /></label>
+
     <label>Email:
-    <input type="text" th:field="*{email}"  /></label>
+    <input type="email" th:field="*{email}"  /></label>
+    <span th:errors="*{email}" class="error"></span>
     <input type="submit" value="Submit" />
 </form>
 

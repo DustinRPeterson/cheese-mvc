@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(value="user")
 public class UserController {
@@ -20,7 +22,12 @@ public class UserController {
     }
 
     @RequestMapping(value="add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute User user, String verify) {
+    public String add(Model model, @ModelAttribute @Valid User user, Errors errors, String verify) {
+
+        if(errors.hasErrors()) {
+            model.addAttribute(user);
+            return "user/add";
+        }
 
         if(user.getPassword().equals(verify)) {
             model.addAttribute("user", user);
