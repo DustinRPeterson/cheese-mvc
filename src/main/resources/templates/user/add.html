@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace = "fragments :: head">
+</head>
+<body>
+
+<div th:if="${error}">
+    <p>Passwords do not match</p>
+</div>
+
+<form method="post" th:object="${user}">
+    <label>Username:
+    <input type="text" th:field="*{username}"  /></label>
+    <label>Password:
+    <input type="password" th:field="*{password}" /></label>
+    <label>Verify Password:
+    <input type="password" name="verify" /></label>
+    <label>Email:
+    <input type="text" th:field="*{email}"  /></label>
+    <input type="submit" value="Submit" />
+</form>
+
+</body>
+</html>
